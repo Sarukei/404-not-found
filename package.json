@@ -4,8 +4,8 @@
   "description": "<!-- Please update value in the {}  -->",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently -kill-others -n \"SASS:WATCH,LIVE-SERVER\" -c \"white.bgMagenta,gray.bgCyan\" \"npm run sass:watch\" \"npm run serve\"",
-    "serve": "live-server",
+    "dev": "webpack serve --open",
+    "build": "webpack",
     "sass": "node-sass scss -o css --source-map true --output-style expanded",
     "sass:watch": "npm run sass -- -w"
   },
@@ -13,8 +13,18 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.14.3",
+    "@babel/preset-env": "^7.14.4",
+    "babel-loader": "^8.2.2",
     "concurrently": "^6.2.0",
-    "live-server": "^1.2.1",
-    "node-sass": "^6.0.0"
+    "css-loader": "^5.2.6",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "node-sass": "^6.0.0",
+    "sass-loader": "^12.0.0",
+    "style-loader": "^2.0.0",
+    "webpack": "^5.38.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }
