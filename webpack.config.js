@@ -1,7 +1,10 @@
 const currentTask = process.env.npm_lifecycle_event
 const path = require('path');
+const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+
 
 
 const config = {
@@ -33,6 +36,10 @@ const config = {
 					// Compiles Sass to CSS
 					"sass-loader",
 				],
+			},
+			{
+				test: /\.(png|svg|jpg|jpeg|gif)$/i,
+				type: 'asset/resource'
 			}
 		]
 	}
@@ -41,7 +48,8 @@ const config = {
 		new HtmlWebpackPlugin({ template: './src/index.html', filename: 'index.html' })
 	],
 	devServer: {
-		contentBase: path.join(__dirname, 'dist'),
+		before: (app, server) => server._watch('./src/**/*.html'),
+		contentBase: path.join(__dirname, 'src'),
 		port: 8080,
 		hot: true,
 		watchContentBase: true
@@ -52,7 +60,11 @@ const config = {
 if (currentTask === 'build') {
 	config.mode = 'production';
 	config.module.rules[1].use[0] = (MiniCssExtractPlugin.loader);
-	config.plugins.push(new MiniCssExtractPlugin({ filename: 'styles.[hash].css' }));
+	config.plugins.push(new MiniCssExtractPlugin({ filename: 'styles.[hash].css' }), new CopyPlugin({
+		patterns: [
+			{ from: "src/img", to: "img" }
+		]
+	}));
 	config.output.clean = true;
 
 }
