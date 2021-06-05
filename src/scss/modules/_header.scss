@@ -1,0 +1,13 @@
+.header {
+	// background: orange;
+	margin-bottom: 2.75rem;
+	padding: 1.25rem 0;
+	&__title {
+		font-family: $font-secondary;
+		font-size: 1.5rem;
+		text-transform: uppercase;
+		font-weight: 700;
+		color: $primary-color;
+		letter-spacing: -2px;
+	}
+}
