@@ -10,7 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const config = {
 	entry: path.resolve(__dirname, 'src', 'main.js'),
 	output: {
-		path: path.resolve(__dirname, 'dist'),
+		path: path.resolve(__dirname, 'docs'),
 		filename: '[name].[hash].js',
 	},
 	mode: 'development',
