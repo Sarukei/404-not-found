@@ -4,9 +4,6 @@ const CopyPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
-
-
-
 const config = {
 	entry: path.resolve(__dirname, 'src', 'main.js'),
 	output: {
