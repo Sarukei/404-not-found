@@ -1,0 +1,19 @@
+$bp-small: 31.25em;
+$bp-med: 40em;
+
+$breakpoints: (
+	"small": 31.25em,
+	"medium": 58.75em,
+);
+
+@mixin atSmall {
+	@media screen and (min-width: $bp-small) {
+		@content;
+	}
+}
+
+@mixin atMedium {
+	@media screen and (min-width: $bp-med) {
+		@content;
+	}
+}
